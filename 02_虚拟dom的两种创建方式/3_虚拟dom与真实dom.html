@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>使用jsx创建虚拟dom</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div id="test"></div>
+    <script type="text/babel">
+      //创建虚拟dom
+      const vDom = (
+        <h1 id="title">
+          <span>Hello, world!</span>
+        </h1>
+      );
+      const tDom = document.getElementById("test");
+      //渲染虚拟dom到页面
+      ReactDOM.render(vDom, document.getElementById("root"));
+      console.log("虚拟dom", vDom);
+      console.log("真实dom", tDom);
+      console.log(typeof vDom);
+      console.log(vDom instanceof Object);
+      /* 
+            虚拟dom本质上是一个object对象(一般对象)
+            虚拟dom身上属性比较少，真实dom属性比较多，主要是react内部再用，许多属性用不上
+            虚拟dom最终会被转化为真实dom
+        */
+    </script>
+  </body>
+</html>

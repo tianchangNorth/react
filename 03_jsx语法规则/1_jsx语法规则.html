@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jsx语法规则</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <style>
+    .title {
+      background-color: skyblue;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const myId = "openatom";
+      const myData = "hello,react";
+      const vDom = (
+        <h1 className="title" id={myId.toLowerCase()}>
+          <span style={{ color: "white", fontSize: "40px" }}>
+            {myData.toLowerCase()}
+          </span>
+        </h1>
+      );
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(vDom);
+      /*
+        1.定义虚拟dom时不要写''
+        2.标签中混入js表达式时要用{}
+        3.样式的类名指定要用className
+        4.内联样式要用style={{key：value}}的形式去写
+        5.虚拟dom只能由一个根标签
+        6.标签必须闭合
+        7.关于标签首字母
+            若小写字母开头 则将之转为html同名元素，若无同名元素则报错
+            若大写字母开头 react就去渲染对应组件，若组件未定义则报错
+      */
+    </script>
+  </body>
+</html>
